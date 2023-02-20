@@ -1,0 +1,19 @@
+{
+    "name": "renal/orm",
+    "type": "project",
+    "authors": [
+        {
+            "name": "renaldas100",
+            "email": "renaldas0119@gmail.com"
+        }
+    ],
+    "require": {
+        "eftec/bladeone": "^4.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "models\\": "models/",
+            "helper\\": "helper/"
+        }
+    }
+}

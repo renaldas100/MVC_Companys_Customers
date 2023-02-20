@@ -1,0 +1,50 @@
+<?php $_shouldextend[1]=1; ?>
+<?php $this->startSection("content"); ?>
+
+ <div class="card">
+ <div class="card-header">Įmonės</div>
+
+ <div class="card-body">
+ <a href="newCompany.php" class="btn btn-success float-end">Pridėti naują įmonę</a>
+ <table class="table">
+ <thead>
+ <tr>
+ <th>Pavadinimas</th>
+ <th>Adresas</th>
+ <th>PVM kodas</th>
+ <th>Tel.numeris</th>
+ <th>El.paštas</th>
+ <th>Registruota vartotojų</th>
+ <th></th>
+ <th></th>
+ <th></th>
+ </tr>
+ </thead>
+ <tbody>
+ <?php $__currentLoopData = \models\Company::all(); $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $company): $loop = $this->incrementLoopIndices();  ?>
+ <tr>
+ <td><?php echo \htmlentities($company->getName()??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><<?php echo \htmlentities($company->getAddress()??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($company->getVatCode()??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($company->getPhone()??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($company->getEmail()??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td class="text-center"><?php echo \htmlentities(\models\Customer::countCustomers($company->getId())??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td>
+ <a class="btn btn-info" href="customers.php?id=<?php echo \htmlentities($company->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>">Rodyti vartotojus</a>
+ </td>
+ <td>
+ <a class="btn btn-info" href="updateCompany.php?id=<?php echo \htmlentities($company->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>">Redaguoti</a>
+ </td>
+ <td>
+ <a class="btn btn-danger"
+ href="index.php?delete=<?php echo \htmlentities($company->getId()??'', ENT_QUOTES, 'UTF-8', false); ?>">Trinti</a>
+ </td>
+ </tr>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </tbody>
+ </table>
+ </div>
+ </div>
+<?php $this->stopSection(); ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild("layouts.main"); } ?>
