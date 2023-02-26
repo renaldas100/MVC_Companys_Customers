@@ -1,23 +1,48 @@
 <?php
 
+
+//session_start();
+//require_once "tikrinamas_prisijungimas.php";
+
 use eftec\bladeone\BladeOne;
+use helper\Admin;
 use models\Company;
 use models\Customer;
+require_once "config.php";
 
-require_once "vendor/autoload.php";
+//require_once "vendor/autoload.php";
 
+
+//echo  password_hash("labas", PASSWORD_DEFAULT);
+//echo "<br>";
+//echo  password_hash("labassuper", PASSWORD_DEFAULT);
+//echo "<br>";
+
+//echo Admin::login("renaldas@renaldas.lt","labas");
+//
+//echo "<br>";
+//
+if(isset($_GET['logout'])==true){
+    Admin::logout();
+
+//    unset($_SESSION['user_id']);
+//    session_destroy();
+//    header('location: login.php');
+//    die();
+}
+//
 
 //$cvbcvb=new \Renaldas\Company()
 //$sfdsdf=new Company();
 
 //DB::getDB();
-echo "vykdau užklausa";
+//echo "vykdau užklausa";
 //
 //$jonas=new Company("Jono stalai","Jono gatvė 1","LT222222","Jono stalai","123456","jonas@jonas.lt");
 //echo "<br>";
 //var_dump($jonas->getId());
 //print_r($jonas->getId());
-echo "<br>";
+//echo "<br>";
 //$jonas->save();
 //echo "Company įrašas išsaugotas";
 //echo "<br>";
@@ -56,6 +81,9 @@ echo "<br>";
 //$jonas->save();
 
 if (isset($_GET['delete'])) {
+//    Admin::logout();
+
+
     Company::get($_GET['delete'])->delete();
     header("location: index.php");
     die();
@@ -82,39 +110,54 @@ if (isset($_GET['delete'])) {
 //    echo $imone->getAddress()."<br>";
 //}
 
-
-// 1 VARIANTAS
-echo "<hr> 1 VARIANTAS <br>";
-$imone=Customer::get(9);
-echo $imone->getCompany()->getName();
-
-// 2 VARIANTAS
-echo "<hr> 2 VARIANTAS <br>";
-foreach (Customer::getCompany2(9) as $imone) {
-    echo "Įmonė: ".$imone->getName() . "<br>";
-}
-
-// 3 VARIANTAS
-echo "<hr> 3 VARIANTAS <br>";
-$imone=Customer::getCompany3(9);
-echo $imone;
-
-
-echo "<hr> POKALBIO ISTORIJA: <br>";
-foreach (Customer::getConversation(9) as $conversation) {
-    echo $conversation['conversation'] . "<br>";
-}
-
-foreach (Company::all() as $imone) {
-    echo "Įmonė: ".$imone->getName() . "<br>";
-}
-
-$vartotojai=Customer::countCustomers(5);
-print_r($vartotojai);
-
-
+//
+//// 1 VARIANTAS
+//echo "<hr> 1 VARIANTAS <br>";
+//$imone=Customer::get(9);
+//echo $imone->getCompany()->getName();
+//
+//// 2 VARIANTAS
+//echo "<hr> 2 VARIANTAS <br>";
+//foreach (Customer::getCompany2(9) as $imone) {
+//    echo "Įmonė: ".$imone->getName() . "<br>";
+//}
+//
+//// 3 VARIANTAS
+//echo "<hr> 3 VARIANTAS <br>";
+//$imone=Customer::getCompany3(9);
+//echo $imone;
+//
+//
+//echo "<hr> POKALBIO ISTORIJA: <br>";
+//foreach (Customer::getConversation(9) as $conversation) {
+//    echo $conversation['conversation'] . "<br>";
+//}
+//
+//foreach (Company::all() as $imone) {
+//    echo "Įmonė: ".$imone->getName() . "<br>";
+//}
+//
+//$vartotojai=Customer::countCustomers(5);
+//print_r($vartotojai);
+//
+//
 $blade=new BladeOne(__DIR__."/views", __DIR__."/compile",BladeOne::MODE_DEBUG);
 echo $blade->run("index");
+
+
+//Admin::logout();
+
+Admin::loginVerify();
+
+if (Admin::isLogin()){
+    echo "Prisijunge";
+}else{
+    echo "Neprisijunge";
+}
+
+//echo Admin::login("renaldas@renaldas.lt","labas");
+
+
 
 
 

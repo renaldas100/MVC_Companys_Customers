@@ -16,7 +16,7 @@ class DB
 
     public static function getDB(){
         if(self::$pdo==null){
-            self::$pdo = new PDO('mysql:host=localhost;dbname=crm_customers', 'root',);
+            self::$pdo = new PDO('mysql:host=localhost;dbname='.DB_NAME,DB_USER,DB_PASSWORD);
 //            echo "PRISIJUNGIU <br>";
         }
 

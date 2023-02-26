@@ -1,10 +1,14 @@
 <?php
 
 use eftec\bladeone\BladeOne;
+use helper\Admin;
 use models\Conversation;
 
-require_once "vendor/autoload.php";
 
+require_once "config.php";
+//require_once "vendor/autoload.php";
+
+Admin::loginVerify();
 
 
 

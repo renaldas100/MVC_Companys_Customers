@@ -2,7 +2,8 @@
 @extends("layouts.main")
 @section("content")
 
-<div class="card">
+    <a class="btn btn-success text-decoration-none my-3" href="index.php?logout=true">Atsijungti</a>
+    <div class="card">
     <div class="card-header">Vartotojai</div>
 
     <div class="card-body">

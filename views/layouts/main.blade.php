@@ -8,6 +8,28 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
+
+@if(\helper\Admin::isLogin())
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                @foreach(\helper\Admin::getAdmin()->getNav() as $name=>$link)
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ $link }}">{{ $name }}</a>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+        <a class="btn btn-success float-end" href="login.php?logout=true">Atsijungti</a>
+    </div>
+</nav>
+@endif
+
 <div class="container">
     <div class="row">
         <div class="col-md-12 my-5">

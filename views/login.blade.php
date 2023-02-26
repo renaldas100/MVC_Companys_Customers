@@ -1,0 +1,26 @@
+
+
+@extends("layouts.main")
+@section("content")
+
+    <div class="row mt-4 d-flex justify-content-center">
+        <div class="col-md-6 text-center">
+            <div class="card">
+                <div class="card-header">
+                    Prisijunkite prie sistemos
+                </div>
+                <div class="card-body">
+                    <form method="post" action="login.php">
+                        <label>Įveskite elektroninio pašto adresą</label><br>
+                        <input class="form-control" type="text" name="email"><br>
+                        <label class="mt-3">Įveskite slaptažodį</label><br>
+                        <input class="form-control" type="password" name="password"><br>
+                        <button class="btn btn-success mt-3" type="submit" name="login" value="true">Prisijungti</button>
+                        <a href="newUser.php" class="btn btn-success mt-3">Sukurti naują paskyrą</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection

@@ -1,6 +1,7 @@
 <?php $_shouldextend[1]=1; ?>
 <?php $this->startSection("content"); ?>
 
+ <a class="btn btn-success text-decoration-none my-3" href="index.php?logout=true">Atsijungti</a>
 <div class="card">
  <div class="card-header">Pokalbiai</div>
 

@@ -5,7 +5,10 @@ require_once "models/Company.php";
 require_once "models/Customer.php";
 require_once "models/Conversation.php";
 
+require_once "config.php";
+
 use Models\Company;
+
 
 
 $id=$_GET['id'];
